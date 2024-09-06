@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './login.css';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    alert('Inisiando seción...');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>IniciaRer sesión</h2>
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <label>Usuario:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Ingresa tu usuario"
+            />
+          </div>
+          <div className="input-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Ingresa tu contraseña"
+            />
+          </div>
+          <button type="submit" className="login-button">
+            Iniciar Sesión
+          </button>
+        </form>
       </div>
-      <h1>Proyecto de ejemplo de ....</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
